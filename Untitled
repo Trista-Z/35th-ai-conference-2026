@@ -1,0 +1,58 @@
+<div class="hero-header" style="margin-bottom:40px; text-align:center;">
+
+  <div class="eyebrow"
+       data-en="INTERNATIONAL AI COOPERATION AND GOVERNANCE FORUM"
+       data-zh="人工智能合作与治理国际论坛"
+       style="text-align:center;">
+    INTERNATIONAL AI COOPERATION AND GOVERNANCE FORUM
+  </div>
+
+  <h1 style="
+      text-align:center;
+      margin:12px auto 0;
+      font-size:clamp(38px,5vw,78px);
+      line-height:1.15;
+      font-weight:800;
+      letter-spacing:-0.02em;">
+      
+    <span class="hero-title-line"
+          data-en="2026 International AI Cooperation and Governance Forum"
+          data-zh="2026 人工智能合作与治理国际论坛"
+          style="display:block; text-align:center; white-space:nowrap;">
+      2026 International AI Cooperation and Governance Forum
+    </span>
+  </h1>
+
+  <p class="hero-meta"
+     style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:28px;
+      flex-wrap:wrap;
+      margin-top:22px;
+      color:#fff;
+      font-size:18px;">
+
+    <span style="display:flex; align-items:center; gap:8px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      Dec 4–6, 2026
+    </span>
+
+    <span style="display:flex; align-items:center; gap:8px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      HKUST, HK
+    </span>
+
+  </p>
+</div>
