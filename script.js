@@ -137,20 +137,46 @@ function startBannerCarousel() {
 }
 
 function highlightActiveNav() {
-  // 获取当前页面路径
   const currentPath = window.location.pathname;
-  
-  // 选择所有导航链接，但不包括语言切换器 (data-lang)
   const navLinks = document.querySelectorAll(".navlinks a:not([data-lang])");
-  
+
   navLinks.forEach(link => {
     const href = link.getAttribute("href");
-    
-    // 逻辑：如果当前路径以链接地址结尾，或者在根目录下且链接指向首页
+
     if (currentPath.endsWith(href) || (currentPath === "/" && href === "index.html")) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
+    }
+  });
+}
+
+function bindMobileNav() {
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".navlinks");
+  if (!toggle || !nav) return;
+
+  const syncNavState = (open) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("open", open);
+  };
+
+  syncNavState(false);
+
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    syncNavState(!isOpen);
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      syncNavState(false);
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      syncNavState(false);
     }
   });
 }
@@ -160,4 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
   applyI18n();
   bindRegistrationForm();
   startBannerCarousel();
+  highlightActiveNav();
+  bindMobileNav();
 });
