@@ -156,9 +156,21 @@ function bindMobileNav() {
   const nav = document.querySelector(".navlinks");
   if (!toggle || !nav) return;
 
+  let lastFocusedElement = null;
+
   const syncNavState = (open) => {
+    const isMobileViewport = window.innerWidth <= 768;
     toggle.setAttribute("aria-expanded", String(open));
-    nav.classList.toggle("open", open);
+    nav.classList.toggle("open", isMobileViewport && open);
+    nav.setAttribute("aria-hidden", String(isMobileViewport ? !open : false));
+    document.body.classList.toggle("nav-open", isMobileViewport && open);
+
+    if (isMobileViewport && open) {
+      lastFocusedElement = document.activeElement;
+      nav.querySelector("a")?.focus();
+    } else if (lastFocusedElement instanceof HTMLElement && isMobileViewport) {
+      lastFocusedElement.focus();
+    }
   };
 
   syncNavState(false);
@@ -172,6 +184,20 @@ function bindMobileNav() {
     link.addEventListener("click", () => {
       syncNavState(false);
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    if (!nav.classList.contains("open")) return;
+    if (nav.contains(target) || toggle.contains(target)) return;
+    syncNavState(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.classList.contains("open")) {
+      syncNavState(false);
+    }
   });
 
   window.addEventListener("resize", () => {
