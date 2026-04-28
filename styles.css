@@ -18,6 +18,7 @@ html {
 }
 
 .hero.hero-banner-bg h1, 
+.hero.hero-banner-bg h3,
 .hero.hero-banner-bg p {
   color: #ffffff;
 }
@@ -94,28 +95,15 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px; /* 减少logo之间的空隙，可以根据需要调整 */
-  margin-bottom: 0; /* 移除下方的间距 */
+  gap: 10px; 
 }
 
 .logo {
-  height: clamp(44px, 6vw, 56px); /* 确保logo尺寸一致 */
-  width: auto;
-  object-fit: contain;
-}
-
-.hero h1 {
-  margin: 0; /* 移除上下边距，减少空间 */
-  padding: 0; /* 确保标题上下没有额外的内边距 */
-  font-size: clamp(2rem, 4.6vw, 2.5rem); /* 调整字体大小 */
+  height: clamp(48px, 6vw, 56px); 
+  padding: 0; 
+  font-size: clamp(2rem, 4.6vw, 2rem); 
   text-wrap: balance;
 }
-
-.hero p {
-  margin-top: 10px; /* 调整上下间距，确保文字之间不会太远 */
-  font-size: clamp(1rem, 2.2vw, 1.125rem);
-}
-
 
 .hero .container {
   text-align: center;
@@ -304,8 +292,8 @@ h1 {
   font-size: 1rem;
   opacity: 0.85;
   border-top: 1px solid rgba(255,255,255,0.2); 
-  padding-top: 2px;
-  margin-top: 3px;
+  padding-top: 12px;
+  margin-top: 12px;
 }
 
 .hero-card,
@@ -444,21 +432,42 @@ h2 {
 .speaker-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 32px 24px;
 }
 
 .speaker-card {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 16px;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: 
+    "photo info"
+    "bio bio";
+  column-gap: 20px;
+  row-gap: 16px;
+  align-items: start;
+  padding: 24px 0; /* 保持与 .card 一致的上下间距 */
 }
 
 
 .speaker-photo {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
+  grid-area: photo;
+  width: 100px;
+  height: 120px;
   object-fit: cover;
+  border-radius: 8px; 
+  border: 1px solid var(--line);
+}
+
+.speaker-card > div {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 120px; 
+}
+
+.speaker-card h3 {
+  margin: 0 0 6px 0 !important;
+  font-size: 20px;
 }
 
 .speaker-role {
@@ -466,6 +475,17 @@ h2 {
   font-size: 16px;
   margin-bottom: 6px;
   overflow-wrap: anywhere;
+}
+
+.speaker-card p {
+ 
+  grid-column: 1 / -1; 
+  grid-row: 2;
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: left;
 }
 
 .timeline-horizontal {
@@ -509,7 +529,7 @@ h2 {
   background-color: var(--accent);
   border-radius: 50%;
   margin-bottom: 12px;
-  border: 3px solid #fff; /* 给圆点加白色边框，让它在灰线上看起来更精致 */
+  border: 3px solid #fff; 
   box-shadow: 0 0 0 1px #e0e6ed;
 }
 
@@ -821,8 +841,21 @@ footer {
     gap: 14px;
   }
   .speaker-photo {
-    aspect-ratio: 1 / 1.15;
+    grid-area: photo;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; 
   }
+
+  .speaker-card > div {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
   .photo-placeholder {
     min-height: 132px;
   }
@@ -866,7 +899,7 @@ footer {
     gap: 6px;
   }
   .hero.hero-banner-bg h1:first-of-type {
-    font-size: clamp(1.6rem, 7.5vw, 2.15rem);
+    font-size: clamp(1.8rem, 7.5vw, 2.15rem);
     margin-bottom: 8px;
   }
   .hero.hero-banner-bg h1:last-of-type {
@@ -876,8 +909,20 @@ footer {
     margin-bottom: 18px;
   }
   .speaker-card {
-    grid-template-columns: 88px 1fr;
-    gap: 12px;
+    display: grid;
+   
+    grid-template-columns: 100px 1fr;
+    grid-template-areas: 
+      "photo info"
+      "bio bio";
+    column-gap: 16px;
+    row-gap: 12px;
+    align-items: start;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fff;
+    transition: transform 0.2s;
   }
   .speaker-photo {
     aspect-ratio: 1 / 1.15;
