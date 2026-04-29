@@ -89,6 +89,7 @@ main {
 .container {
   width: min(var(--max), calc(100vw - 32px));
   margin: 0 auto;
+  
 }
 
 .logo-row {
@@ -348,7 +349,6 @@ h2 {
 
 .lead {
   color: var(--muted);
-  max-width: 72ch;
   margin-bottom: 24px;
 }
 
@@ -447,14 +447,12 @@ h2 {
   padding: 24px 0; /* 保持与 .card 一致的上下间距 */
 }
 
-
 .speaker-photo {
   grid-area: photo;
   width: 100px;
   height: 120px;
   object-fit: cover;
   border-radius: 8px; 
-  border: 1px solid var(--line);
 }
 
 .speaker-card > div {
@@ -674,12 +672,12 @@ h2 {
 }
 
 .bullet-list li {
-  list-style: none; /* 确保去掉默认圆点 */
-  position: relative; /* 关键：为了给小圆点定位 */
+  list-style: none; 
+  position: relative; 
   padding: 0 0 24px 24px; /* 增加左侧内边距给圆点留出空间，增加底部间距 */
   color: var(--muted);
   background: transparent;
-  border-left: none; /* 删掉之前的竖线 */
+  border-left: none; 
 }
 
 .bullet-list li:last-child {
